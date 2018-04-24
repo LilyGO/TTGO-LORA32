@@ -10,11 +10,11 @@
 #define SS      18   // GPIO18 -- SX1278's CS
 #define RST     14   // GPIO14 -- SX1278's RESET
 #define DI0     26   // GPIO26 -- SX1278's IRQ(Interrupt Request)
-#define BAND    433E6
+#define BAND    868E6
 
 unsigned int counter = 0;
 
-SSD1306 display(0x3c, 4, 15);
+SSD1306 display(0x3c, 21, 22);
 String rssi = "RSSI --";
 String packSize = "--";
 String packet ;
