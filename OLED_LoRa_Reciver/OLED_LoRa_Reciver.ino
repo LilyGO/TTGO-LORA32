@@ -12,7 +12,7 @@
 #define DI0     26   // GPIO26 -- SX1278's IRQ(Interrupt Request)
 #define BAND    868E6
 
-SSD1306 display(0x3c, 21, 22);
+SSD1306 display(0x3c, 4, 15);
 String rssi = "RSSI --";
 String packSize = "--";
 String packet ;
