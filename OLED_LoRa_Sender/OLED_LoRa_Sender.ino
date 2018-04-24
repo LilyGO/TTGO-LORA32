@@ -14,7 +14,7 @@
 
 unsigned int counter = 0;
 
-SSD1306 display(0x3c, 21, 22);
+SSD1306 display(0x3c, 4, 15);
 String rssi = "RSSI --";
 String packSize = "--";
 String packet ;
