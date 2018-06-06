@@ -5,12 +5,12 @@
 #include "images.h"
 
 #define SCK     5    // GPIO5  -- SX1278's SCK
-#define MISO    19   // GPIO19 -- SX1278's MISO
+#define MISO    19   // GPIO19 -- SX1278's MISnO
 #define MOSI    27   // GPIO27 -- SX1278's MOSI
 #define SS      18   // GPIO18 -- SX1278's CS
 #define RST     14   // GPIO14 -- SX1278's RESET
 #define DI0     26   // GPIO26 -- SX1278's IRQ(Interrupt Request)
-#define BAND    868E6
+#define BAND  868E6
 
 unsigned int counter = 0;
 
@@ -19,11 +19,7 @@ String rssi = "RSSI --";
 String packSize = "--";
 String packet ;
 
-void logo(){
-  display.clear();
-  display.drawXbm(0,5,logo_width,logo_height,logo_bits);
-  display.display();
-}
+ 
 
 void setup() {
   pinMode(16,OUTPUT);
@@ -33,7 +29,7 @@ void setup() {
   delay(50); 
   digitalWrite(16, HIGH); // while OLED is running, must set GPIO16 in high
   
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
   Serial.println();
   Serial.println("LoRa Sender Test");
@@ -50,7 +46,7 @@ void setup() {
   display.init();
   display.flipScreenVertically();  
   display.setFont(ArialMT_Plain_10);
-  logo();
+   
   delay(1500);
 }
 
@@ -61,6 +57,7 @@ void loop() {
   
   display.drawString(0, 0, "Sending packet: ");
   display.drawString(90, 0, String(counter));
+  Serial.println(String(counter));
   display.display();
 
   // send packet
