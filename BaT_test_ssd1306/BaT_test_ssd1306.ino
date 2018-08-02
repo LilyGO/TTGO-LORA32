@@ -39,9 +39,13 @@ void loop()
   delay(100);
   
   // Battery Voltage
-//  VBAT = (120.0/20.0) * (float)(analogRead(vbatPin)) / 1024.0; // LiPo battery voltage in volts
-//   VBAT = (float)(analogRead(vbatPin))/(4095)*2*3.3*1.1;
-   VBAT = (float)(analogRead(vbatPin)) / 4095*2*3.3*1.1;
+  VBAT = (float)(analogRead(vbatPin)) / 4095*2*3.3*1.1;
+  /*
+  The ADC value is a 12-bit number, so the maximum value is 4095 (counting from 0).
+  To convert the ADC integer value to a real voltage you’ll need to divide it by the maximum value of 4095,
+  then double it (note above that Adafruit halves the voltage), then multiply that by the reference voltage of the ESP32 which 
+  is 3.3V and then vinally, multiply that again by the ADC Reference Voltage of 1100mV.
+  */
   Serial.println("Vbat = "); Serial.print(VBAT); Serial.println(" Volts");
   display.clear();
   drawFontFaceDemo(VBAT);
